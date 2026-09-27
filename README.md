@@ -1,5 +1,3 @@
-*Inspired by the himouto archetype. Not affiliated with Himouto! Umaru-chan.*
-
 <p align="center">
   <img src="assets/logo.png" width="160" alt="himouto logo" />
 </p>

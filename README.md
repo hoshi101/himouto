@@ -59,7 +59,7 @@ himouto/
 └── .python-version              # Python 3.11
 ```
 
-The plugin manifest (`.claude-plugin/plugin.json`) and skill definition (`skills/himouto/SKILL.md`) are in progress and not yet in the repo.
+The plugin manifest (`.claude-plugin/plugin.json`) and skill definition (`skills/himouto/SKILL.md`) are v0.1 drafts: they pass `claude plugin validate --strict` but have not been tried on real code yet.
 
 ## Quickstart (current, for development)
 

@@ -21,7 +21,6 @@ himouto is a Claude Code skill (packaged as a plugin) that attacks Python code w
 
 - **Punchline:** A reviewer says it might break. She proves it breaks.
 - **Metaphor:** She doesn't create bugs. She finds the ones already there — like jumping on a sofa whose leg is already cracked. Better now than when guests arrive (production).
-- **Pairs with [ponytail](https://github.com/DietrichGebert/ponytail):** ponytail makes your agent write less code. himouto makes sure the code that's left doesn't break.
 
 > **Status:** v0.1, in progress. Nothing below has been measured yet — no accuracy, no bug counts, no benchmarks. Anything not built is marked *planned*.
 
@@ -29,7 +28,7 @@ himouto is a Claude Code skill (packaged as a plugin) that attacks Python code w
 
 - AI agents write code that looks right but breaks on inputs nobody tried (empty, negative, boundary, rounding, huge values).
 - Example-based tests check the cases the author already thought of.
-- Property-based testing finds the rest, but writing properties/specs is the #1 barrier to using it in practice (16 of 30 participants in [Goldstein et al., "Property-Based Testing in Practice"](https://andrewhead.info/assets/pdf/pbt-in-practice.pdf)).
+- Property-based testing finds the rest, but writing the properties is the hard part.
 
 ## How it works (v0.1)
 
@@ -93,7 +92,7 @@ Marketplace install is **planned**, not available yet. The skill itself doesn't 
 | v0.4 | Measure v0.1 vs v0.3 on seeded-bug demos (recall, false positives, cost), including a demo with no bugs |
 | v0.5 | Hook that blocks weakening her tests; optional persona; professional output in CI |
 
-**The idea behind v0.3 (main differentiator):** existing tools find bugs from what code *declares* (docstrings, comments). Business rules like "fee must never be negative" usually live only in people's heads. himouto plans to ask, then lock the answer in as a test — building an executable spec of rules nobody wrote down.
+**The idea behind v0.3 (main differentiator):** a bug is usually judged against what code *declares* (docstrings, comments), but business rules like "fee must never be negative" often live only in people's heads. himouto plans to ask, then lock the answer in as a test — building an executable spec of rules nobody wrote down.
 
 A bratty little-sister voice when running locally, with an automatic professional tone in CI (`CI=true`) and an off switch, is also planned (v0.5) — not implemented in v0.1.
 

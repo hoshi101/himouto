@@ -53,6 +53,8 @@ Property patterns it uses: invariants, round-trip, idempotence, boundary values,
 
 ```
 himouto/
+├── .claude-plugin/plugin.json   # plugin manifest
+├── skills/himouto/SKILL.md      # the skill
 ├── demo/                        # sample code to try the skill on
 ├── tests/                       # project tests
 ├── pyproject.toml, uv.lock      # dev environment (uv)
@@ -70,14 +72,14 @@ uv sync --locked
 uv run pytest
 ```
 
-Try the plugin locally with Claude Code (official dev flow, once the manifest lands):
+Try the plugin locally with Claude Code (official dev flow):
 
 ```bash
 claude plugin validate .
 claude --plugin-dir .
 ```
 
-Once installed, skills are invoked with the plugin prefix, e.g. `/himouto:<skill>`.
+Once the plugin is loaded (via `--plugin-dir` or an install), invoke the skill with the plugin prefix: `/himouto:himouto`.
 
 Marketplace install is **planned**, not available yet. The skill itself doesn't assume `uv` — it runs whatever test command the target project uses.
 

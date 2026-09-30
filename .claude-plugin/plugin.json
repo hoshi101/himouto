@@ -1,0 +1,8 @@
+{
+  "name": "himouto",
+  "version": "0.1.0",
+  "description": "Attacks Python code with edge cases using Hypothesis property-based tests and reports each bug as a minimal failing test.",
+  "author": {
+    "name": "Hoshi"
+  }
+}

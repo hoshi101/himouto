@@ -97,13 +97,6 @@ Marketplace install is **planned**, not available yet. The skill itself doesn't 
 
 A bratty little-sister voice when running locally, with an automatic professional tone in CI (`CI=true`) and an off switch, is also planned (v0.5) — not implemented in v0.1.
 
-## Related work
-
-- [agentic-pbt](https://github.com/mmaaz-git/agentic-pbt) (`/hypo`): agent that writes property-based tests for libraries from documented behavior. himouto targets business code and undocumented rules instead.
-- Trail of Bits' property-based testing skill.
-- [Hypothesis](https://hypothesis.readthedocs.io/), which does the actual input generation and shrinking.
-- [ponytail](https://github.com/DietrichGebert/ponytail), the companion idea.
-
 ## Limitations
 
 - Early and unmeasured. No benchmarks yet.

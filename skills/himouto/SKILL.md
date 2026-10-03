@@ -29,6 +29,8 @@ Copy this checklist and tick items off as you go:
 
 Read the function, its type hints, docstring, input validation, and callers. From these, write down its contract: which inputs are valid and what it promises for them. Every later step is judged against this contract. Find the test command now (see "Running tests").
 
+If the target file or function does not exist, do not conclude it is missing yet. The checkout may be stale: run `git fetch`, then look for the name on other branches (`git log --all -- <path>`, `git ls-tree -r --name-only origin/<default-branch>`). If it is still not found, stop and ask the user; never invent a stand-in to attack.
+
 ### 2. List properties and edge cases
 
 Before writing code, list each property to test (see "Property patterns") and the inputs most likely to break it: empty, zero, negative, huge, NaN/inf, `-0.0`, unicode and whitespace, duplicates, unsorted input, `None` where the type is `Optional`.
@@ -40,6 +42,8 @@ Test at most 5 properties per function, and start with the riskiest functions (m
 - One new file per target module: `tests/test_himouto_<module>.py`. Follow the project's test layout if it differs.
 - Generate only inputs the contract allows. A crash on input the function rejects by design is not a bug.
 - Prefer precise strategies (`st.integers(min_value=0)`) over `assume()` or `.filter()`, which waste examples and trigger health-check errors.
+- Set strategy bounds from the contract (type hints, docstring, validation), not from convenience. If you cap a range to avoid an unrelated failure (for example `Decimal` context precision overflow, `OverflowError`), cite why, and list every cap under "Strategy bounds" in the report. An unexplained cap can hide a real bug.
+- An oracle must be independent of the implementation. Copying the function's own formula into the test makes it pass by construction and proves nothing. Use a different method (exact arithmetic instead of rounded, a brute-force or stdlib reference, or an invariant such as a round-trip or a sum). If the only available oracle is the implementation's own logic, say so and do not count it as a property that held.
 - One property per test function, named after it: `test_parse_format_round_trip`.
 
 ### 4. Run and verify
@@ -90,6 +94,7 @@ Sort findings by severity:
 
 Test command: `<command>` · Test file: `<path>`
 Findings: <n> (high <n>, medium <n>, low <n>)
+Strategy bounds: <caps on generated inputs and why, or "none beyond the contract">
 
 ### [HIGH] <function>: <property that broke, in one line>
 - Test: `<path>::<test_name>`
